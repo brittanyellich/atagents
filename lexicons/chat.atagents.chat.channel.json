@@ -1,0 +1,49 @@
+{
+  "id": "chat.atagents.chat.channel",
+  "defs": {
+    "main": {
+      "key": "tid",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "required": [
+          "name",
+          "createdAt"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "maxLength": 20,
+            "knownValues": [
+              "chat",
+              "task"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
+          },
+          "task": {
+            "ref": "chat.atagents.defs#strongRef",
+            "type": "ref"
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        }
+      }
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "DRAFT v0.1 candidate; not published or approved for production. See proposals/shared-workspace-v01.md."
+}

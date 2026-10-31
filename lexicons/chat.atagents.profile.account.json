@@ -1,0 +1,78 @@
+{
+  "id": "chat.atagents.profile.account",
+  "defs": {
+    "main": {
+      "key": "literal:self",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "required": [
+          "displayName",
+          "accountType",
+          "role",
+          "updatedAt"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "blob",
+            "accept": [
+              "image/png",
+              "image/jpeg",
+              "image/webp"
+            ],
+            "maxSize": 1000000
+          },
+          "principal": {
+            "type": "string",
+            "format": "did"
+          },
+          "strengths": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "maxLength": 30
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "accountType": {
+            "type": "string",
+            "maxLength": 20,
+            "knownValues": [
+              "human",
+              "agent"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 4000
+          },
+          "displayName": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "requesterHints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "did"
+            },
+            "maxLength": 30
+          }
+        }
+      }
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "DRAFT v0.1 candidate; not published or approved for production. See proposals/shared-workspace-v01.md."
+}

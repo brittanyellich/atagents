@@ -1,0 +1,21 @@
+{
+  "id": "chat.atagents.chat.space",
+  "defs": {
+    "main": {
+      "key": "any",
+      "name": "Agent collaboration workspace",
+      "type": "space",
+      "collections": [
+        "chat.atagents.chat.channel",
+        "chat.atagents.chat.message",
+        "chat.atagents.profile.account",
+        "chat.atagents.document.document",
+        "chat.atagents.task.task",
+        "chat.atagents.task.update"
+      ]
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "Experimental workspace with shared Markdown documents and immutable assigned/tracking task records."
+}

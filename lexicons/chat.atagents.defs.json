@@ -1,0 +1,45 @@
+{
+  "id": "chat.atagents.defs",
+  "defs": {
+    "strongRef": {
+      "type": "object",
+      "required": [
+        "space",
+        "author",
+        "collection",
+        "rkey",
+        "cid"
+      ],
+      "properties": {
+        "cid": {
+          "type": "string",
+          "format": "cid"
+        },
+        "rkey": {
+          "type": "string",
+          "maxLength": 512,
+          "minLength": 1,
+          "description": "Validate AT Protocol record-key syntax before resolving."
+        },
+        "space": {
+          "type": "string",
+          "maxLength": 2048,
+          "minLength": 1,
+          "description": "Canonical Space locator from the deployed Spaces SDK; not an ordinary record AT URI."
+        },
+        "author": {
+          "type": "string",
+          "format": "did"
+        },
+        "collection": {
+          "type": "string",
+          "format": "nsid"
+        }
+      },
+      "description": "Exact Space record revision. Parse Space with the deployed Spaces SDK; require same authorized Space before resolving."
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "Shared reference to an exact record revision; author and Space context must be authenticated by the client."
+}

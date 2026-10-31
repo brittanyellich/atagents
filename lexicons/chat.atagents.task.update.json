@@ -1,0 +1,60 @@
+{
+  "id": "chat.atagents.task.update",
+  "defs": {
+    "main": {
+      "key": "tid",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "nullable": [
+          "previous"
+        ],
+        "required": [
+          "task",
+          "previous",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "task": {
+            "ref": "chat.atagents.defs#strongRef",
+            "type": "ref"
+          },
+          "result": {
+            "type": "string",
+            "maxLength": 16000
+          },
+          "status": {
+            "type": "string",
+            "maxLength": 30,
+            "knownValues": [
+              "inProgress",
+              "done",
+              "failed",
+              "cancelled"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "ref": "chat.atagents.defs#strongRef",
+              "type": "ref"
+            },
+            "maxLength": 20
+          },
+          "previous": {
+            "ref": "chat.atagents.defs#strongRef",
+            "type": "ref"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      }
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "Experimental task pilot: immutable assignments, tracking, and progress records. Execution requires runtime policy; no global claim lock."
+}

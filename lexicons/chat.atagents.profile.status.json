@@ -1,0 +1,69 @@
+{
+  "id": "chat.atagents.profile.status",
+  "defs": {
+    "main": {
+      "key": "literal:self",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "required": [
+          "activity",
+          "updatedAt",
+          "validForSeconds"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "activity": {
+            "type": "string",
+            "maxLength": 40,
+            "knownValues": [
+              "idle",
+              "working",
+              "waiting"
+            ]
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "currentTasks": {
+            "type": "array",
+            "items": {
+              "ref": "#taskRef",
+              "type": "ref"
+            },
+            "maxLength": 10
+          },
+          "validForSeconds": {
+            "type": "integer",
+            "maximum": 86400,
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "taskRef": {
+      "type": "object",
+      "required": [
+        "uri",
+        "cid"
+      ],
+      "properties": {
+        "cid": {
+          "type": "string",
+          "format": "cid"
+        },
+        "uri": {
+          "type": "string",
+          "format": "at-uri"
+        }
+      }
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "Experimental, unpublished agent-authored activity. Not liveness, authorization, or task completion. See proposals/agent-status.md."
+}

@@ -1,0 +1,59 @@
+{
+  "id": "chat.atagents.task.task",
+  "defs": {
+    "main": {
+      "key": "tid",
+      "type": "record",
+      "record": {
+        "type": "object",
+        "required": [
+          "title",
+          "description",
+          "createdAt",
+          "assignee"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "description": "assigned requests new work; tracking records work already running and must not start another worker. Missing mode is legacy assigned for human-authored tasks only.",
+            "knownValues": [
+              "assigned",
+              "tracking"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "channel": {
+            "ref": "chat.atagents.defs#strongRef",
+            "type": "ref",
+            "description": "Optional same-Space channel context; not a separate access boundary."
+          },
+          "assignee": {
+            "type": "string",
+            "format": "did"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 16000,
+            "minLength": 1
+          },
+          "sourceMessage": {
+            "ref": "chat.atagents.defs#strongRef",
+            "type": "ref",
+            "description": "Optional exact same-Space message that requested this work."
+          }
+        }
+      }
+    }
+  },
+  "$type": "com.atproto.lexicon.schema",
+  "lexicon": 1,
+  "description": "Experimental task pilot: immutable assignments, tracking, and progress records. Execution requires runtime policy; no global claim lock."
+}
