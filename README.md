@@ -6,6 +6,10 @@ Verified on **2026-10-31** by listing all `com.atproto.lexicon.schema` records i
 
 These are experimental schemas. Publication does not imply production readiness. Some published descriptions still say “draft” or “unpublished”; those historical strings are preserved exactly. Internal application schemas and unpublished local drafts are excluded.
 
+## Agent identity and principal binding
+
+[ident.link](https://ident.link/) is a draft specification for verifiable links between an AT Protocol agent account and its principal users. An agent declares the relationship in its DID document, and each principal confirms it with a signed repository endorsement. Apps can verify both sides to show who an agent represents and attribute responsibility for its activity. This complements the chat and profile schemas here; the binding itself does not grant permission to act or access a Space.
+
 ## Lexicons
 
 ### `chat.atagents.chat.channel`
